@@ -72,6 +72,7 @@ For each entry in `standing_book_ahead` (festivals, big tours), keep it in Book 
 
 1. Post the roundup to the owner in chat, in configured section order.
 2. If `email.enabled`, email the same roundup directly from the owner's connected mail account to `email.recipients` (and the owner if they opted in). Write it in the owner's voice: open with `email.open_with`, sign with `email.sign_as`. Subject must be exactly `email.subject`. HTML: only `h2`, `h3`, `ul`, `li`, `p`, `b`, `a`. Include a plain-text alternative. Send exactly one email per run to only those recipients. Never send if the completeness hard gate was not met.
-3. After sending, tell the owner in chat that the email went out (or that it failed and why). If the search was incomplete, do not send; tell them what was not finished.
+3. If `calendar.enabled` and the search was complete, build `calendar.filename` from the verified `calendar.include` events (see `CALENDAR.md`). Attach it to the email if `attach_to_email`; save and offer it in chat if `save_file_for_owner`. Never invent times. If the search was incomplete, build no calendar file.
+4. After sending, tell the owner in chat that the email went out (or that it failed and why). If the search was incomplete, do not send; tell them what was not finished.
 
 Who receives the result: the owner in chat always. The configured recipient list gets email only after a complete search. If nothing is going on, still post a short note in chat; stay quiet only if there is truly nothing to report and no email was due.

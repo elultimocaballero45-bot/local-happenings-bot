@@ -22,12 +22,20 @@ Set any combination in `config.example.yaml`:
 
 The assistant must not invent a region. If nothing is configured, it asks once, then saves the answer.
 
-## Quick start (any AI assistant)
+## First-run setup wizard
 
-1. Copy `AGENT.md` into your assistant’s system / custom instructions.
-2. Copy `WEEKLY_ROUTINE.md` into a weekly scheduled job (cron, Zapier, Make, or your bot’s routines).
-3. Copy `config.example.yaml` → `config.yaml` and fill in your towns, venues, artists, and email list (or paste those values into the prompts).
-4. Connect email if you want the weekly send. **Never commit real passwords or other people’s private emails to a public repo.**
+Do these once, in order.
+
+1. **Get the files.** Fork this repo or download it as a ZIP.
+2. **Make your config.** Copy `config.example.yaml` → `config.yaml`. Never commit real emails or passwords to a public repo.
+3. **Set who and where.** Fill in `owner` (name, email), then `locations` (towns to check) and/or `home` (city + radius). Optional: a `spotlight` town.
+4. **Add your favorites.** List `must_check_venues` and `followed_artists`.
+5. **Load the prompts.** Paste `AGENT.md` into your assistant's system / custom instructions. If your assistant can't read `config.yaml`, paste your values into the `{{PLACEHOLDERS}}` in `WEEKLY_ROUTINE.md`.
+6. **Schedule it.** Create a weekly job (Thursday morning recommended) that runs `WEEKLY_ROUTINE.md`.
+7. **Email (optional).** Connect a mail account, then set `email.subject`, `recipients`, `open_with`, and `sign_as`.
+8. **Calendar (optional).** Set `calendar.enabled: true` to get a weekly `.ics` file. See `CALENDAR.md`.
+9. **Test run.** Run the routine once by hand in chat (no email) and check the list before trusting the first send.
+10. **Confirm the hard gate.** Make sure the bot never emails a partial list (see below).
 
 ## Files
 
@@ -37,6 +45,7 @@ The assistant must not invent a region. If nothing is configured, it asks once, 
 | `WEEKLY_ROUTINE.md` | Full weekly search, format, and completeness gate |
 | `config.example.yaml` | Locations, radius, venues, artists, email list |
 | `EMAIL_TEMPLATE.md` | HTML email shape and voice |
+| `CALENDAR.md` | Optional .ics calendar export |
 
 ## Completeness hard gate
 

@@ -78,6 +78,14 @@ email:
     - "friend2@example.com"
   # Include owner.email in recipients if you want a copy.
 
+calendar:
+  enabled: false                 # set true to build a weekly .ics
+  include: "book_ahead"          # book_ahead | weekend | both
+  filename: "local-happenings.ics"
+  # How to deliver: attach to the weekly email and/or drop a file the owner can open
+  attach_to_email: true
+  save_file_for_owner: true      # also leave the .ics where the owner can download it from chat
+
 schedule:
   day: "Thursday"
   local_time: "09:00"

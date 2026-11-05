@@ -5,6 +5,8 @@
 **From:** owner's connected mail account  
 **To:** everyone in `email.recipients` (and `owner.email` if they opted in)
 
+**Attachment (optional):** `{{calendar.filename}}` when `calendar.enabled` and `attach_to_email` are true. Add a line like "Calendar file attached — open it to add these to your phone."
+
 ## Body (HTML)
 
 Allowed tags only: `h2`, `h3`, `ul`, `li`, `p`, `b`, `a`. No `style` attributes.
