@@ -1,0 +1,92 @@
+# Copy to config.yaml and fill in. Paste these values into AGENT.md / WEEKLY_ROUTINE.md
+# where you see {{PLACEHOLDERS}}, or load this file if your assistant supports it.
+
+owner:
+  display_name: "Alex"           # How the bot addresses you in chat
+  email: "you@example.com"       # Optional: include yourself on the weekly email
+
+# Geography: pick ONE primary mode, or combine them.
+# Mode A — named locations the user wants checked every week (recommended).
+locations:
+  - name: "Hometown"
+    role: "primary"              # listed first in the report
+    towns:
+      - "Hartsville, SC"
+      - "Florence, SC"
+      - "Darlington, SC"
+  - name: "Region"
+    role: "secondary"
+    towns:
+      - "Columbia, SC"
+      - "Camden, SC"
+  - name: "Coast / trip towns"
+    role: "secondary"
+    towns:
+      - "Myrtle Beach, SC"
+      - "Surfside Beach, SC"
+      - "Charleston, SC"
+      - "Wilmington, NC"
+
+# Mode B — optional radius around a home point (use with or instead of named towns).
+home:
+  city: "Hartsville, SC"
+  radius_miles: 75               # include events within this drive; user-set
+
+# Optional spotlight town (extra focus + its own subhead).
+spotlight:
+  enabled: true
+  town: "Surfside Beach, SC"
+  emoji: "🏖️"
+
+# Report section order (customize labels).
+sections:
+  - id: near_home
+    title: "🌳 NEAR HOME"
+    source: "locations where role is primary, plus home radius"
+  - id: farther
+    title: "🌊 FARTHER / TRIP TOWNS"
+    source: "locations where role is secondary"
+  - id: book_ahead
+    title: "🎟️ BOOK AHEAD"
+
+must_check_venues:
+  # Replace with venues you care about. Empty list = skip venue-by-venue checks.
+  - "The Boathouse (Myrtle Beach)"
+  - "House of Blues (North Myrtle Beach)"
+  - "Colonial Life Arena (Columbia)"
+  - "The Senate (Columbia)"
+
+followed_artists:
+  - "Congress the Band"
+  - "Harvey Street"
+  - "The Stews"
+
+standing_book_ahead:
+  # Festivals or tours to refresh every week until they happen.
+  - name: "High Water Festival"
+    url: "https://highwaterfest.com/"
+    note: "Keep ticket status fresh each week."
+
+email:
+  enabled: true
+  from_account: "your-connected-gmail@example.com"
+  subject: "Weekend Update"      # Exact subject every week
+  open_with: "Hey everyone,"
+  sign_as: "Alex"
+  recipients:
+    - "friend1@example.com"
+    - "friend2@example.com"
+  # Include owner.email in recipients if you want a copy.
+
+schedule:
+  day: "Thursday"
+  local_time: "09:00"
+  timezone: "America/New_York"
+
+rules:
+  never_post_publicly: true
+  never_buy_tickets: true
+  never_book_reservations: true
+  keep_sold_out_shows: true      # mark "SOLD OUT (resale only)"
+  one_event_per_line: true
+  completeness_hard_gate: true   # do not email a partial list
